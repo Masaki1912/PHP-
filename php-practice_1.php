@@ -92,9 +92,9 @@ hello('安藤');
 // Q11 関数-2
 $price = 1000;
 
-function calcTaxInPrice($i)
+function calcTaxInPrice($price)
 {
-  return $i * 1.1;
+  return $price * 1.1;
 }
 
 $taxInPrice = calcTaxInPrice($price);
