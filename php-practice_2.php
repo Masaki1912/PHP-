@@ -35,8 +35,8 @@ $personalInfos = [
 var_dump( $personalInfos[1]['name'].'の電話番号は'. $personalInfos[1]['tel'] .'です。' );
 
 //問題2
-foreach ( $personalInfos as $x => $y ) {
-    var_dump(( $x + 1 ).'番目の'. $y['name'] .'さんのメールアドレスは'. $y['mail'] .'で、電話番号は'. $y['tel'] .'です。');
+foreach ( $personalInfos as $index => $property ) {
+    var_dump(( $index + 1 ).'番目の'. $property['name'] .'さんのメールアドレスは'. $property['mail'] .'で、電話番号は'. $property['tel'] .'です。');
 }
 
 //問題３
@@ -100,6 +100,6 @@ $date = new datetime('1992-4-25');
 
 $diff = $today->diff($date);
 
-var_dump($diff->format('あの日から%a日経過しました。'));
+var_dump('あの日から' . $diff->format('%a') . '日経過しました。');
 
 ?>
