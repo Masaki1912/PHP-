@@ -2,7 +2,7 @@
 // Q1 変数と文字列
 $name = '阿部 将輝';
 
-var_dump('私の名前は「' . $name . '」です。');
+echo '私の名前は「' . $name . '」です。';
 
 // Q2 四則演算
 $num = 5*4;
@@ -43,13 +43,11 @@ $citys = [
   '茨城県' => '水戸市'
 ];
 
-var_dump($citys[0]);
-var_dump($citys[1]);
-var_dump($citys[2]);
-var_dump($citys[3]);
-var_dump($citys[4]);
-var_dump($citys[5]);
-var_dump($citys[6]);
+foreach($citys as $value)
+{
+ echo $value;
+ echo "\n";
+}
 
 // Q8 連想配列-2
 $town = '埼玉県';
@@ -83,14 +81,25 @@ foreach ($citys as $town => $city) {
 
 // Q10 関数-1
 function hello($name) {
-  echo $name.'さん、こんにちは。';
+  return $name.'さん、こんにちは。';
 }
 
-hello('金谷');
-hello('安藤');
+$message = hello('金谷');
+echo($message);
+
+$message2 = hello('安藤');
+echo($message2);
 
 // Q11 関数-2
+$price = 1000;
 
+function calcTaxInPrice($price)
+{
+  return $price * 1.1;
+}
+
+$taxInPrice = calcTaxInPrice($price);
+var_dump($price.'円の商品の税込価格は'.$taxInPrice.'円です。');
 
 // Q12 関数とif文
 function distinguishNum($i)
@@ -104,10 +113,10 @@ function distinguishNum($i)
 }
 
 $odd = distinguishNum(11);
-var_dump($odd);
+echo($odd);
 
 $even = distinguishNum(24);
-var_dump($even);
+echo($even);
 
 
 // Q13 関数とswitch文
