@@ -104,11 +104,11 @@ var_dump($price.'円の商品の税込価格は'.$taxInPrice.'円です。');
 // Q12 関数とif文
 function distinguishNum($i)
 {
-    if ( $i % 2 === 1 )
+    if ( $number % 2 === 1 )
     {
-      return $i . 'は奇数です。';   
+      return $number . 'は奇数です。';   
     } else {
-      return $i . 'は偶数です。';
+      return $number . 'は偶数です。';
     }
 }
 
