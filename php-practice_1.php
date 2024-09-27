@@ -1,39 +1,47 @@
 <?php
 // Q1 変数と文字列
 $name = '阿部 将輝';
+$name = '田中 太郎';
 
 echo '私の名前は「' . $name . '」です。';
+
 
 // Q2 四則演算
 $num = 5*4;
 
-var_dump($num);
-var_dump($num/2);
+echo $num;
+echo $num/2;
+
 
 // Q3 日付操作
 echo date('現在時刻は、Y年m月d日 H時i分s秒です。');
 
+
 // Q4 条件分岐-1 if文
 $device = 'not windows';
 
+
 if ($device === 'windows' || $device === 'mac') {
-  var_dump('使用OSは'.$device.'です。');
+  echo '使用OSは'.$device.'です。';
 } else {
-  var_dump('どちらでもありません。');
+  echo 'どちらでもありません。';
 }
+
 
 // Q5 条件分岐-2 三項演算子
 $age = 10;
 $message = ($age > 18) ? '成人です。' : '未成年です。';
-var_dump($message);
+echo $message;
+
 
 // Q6 配列
 $area = ['東京都','神奈川県','埼玉県','栃木県','千葉県','茨城県','群馬県'];
 
-var_dump($area[3].'と'.$area[4].'は関東地方の都道府県です。');
+echo $area[2] . 'と' . $area[3] . 'は関東地方の都道府県です。';
+
 
 // Q7 連想配列-1
-$citys = [
+$cities = [
   '東京都' => '新宿区',
   '神奈川県' => '横浜市',
   '千葉県' => '千葉市',
@@ -43,45 +51,58 @@ $citys = [
   '茨城県' => '水戸市'
 ];
 
-foreach($citys as $value)
+foreach($cities as $value)
 {
  echo $value;
- echo "\n";
+ echo "\n"; //改行の命令文 ※記載時にはダブルクオーテーションで囲む必要がある
 }
+
 
 // Q8 連想配列-2
 $town = '埼玉県';
 
-if(array_key_exists($town,$citys)){
-    $city = $citys[$town];
-    var_dump($town.'の県庁所在地は'.$city.'です。');
+if(array_key_exists($town,$cities)){
+    $city = $cities[$town];
+    echo $town.'の県庁所在地は'.$city.'です。';
 }
 
-//Q8 修正版
-foreach ($citys as $town => $city) {
-  if ($town === '埼玉県')
+//Q8 連想配列-2 修正版
+foreach ($cities as $prefecture => $city) {
+  
+  if ($prefecture === '埼玉県')
   {
-      var_dump($town . 'の県庁所在地は' . $city . 'です。');
+      echo $prefecture . 'の県庁所在地は' . $city . 'です。';
+      break;
   }
 }
+
 
 // Q9 連想配列-3
-$citys['愛知県'] = '名古屋市';
-$citys['大阪府'] = '大阪府';
+$cities['愛知県'] = '名古屋市';
+$cities['大阪府'] = '大阪府';
 
-foreach ($citys as $town => $city) {
-  if ($town === '東京都' || $town === '神奈川県' || $town === '千葉県' || $town === '埼玉県' || $town === '群馬県' || $town === '栃木県' || $town === '茨城県')
+foreach ($cities as $town => $city) {
+  if (
+    $town === '東京都' ||
+    $town === '神奈川県' ||
+    $town === '千葉県' ||
+    $town === '埼玉県' ||
+    $town === '群馬県' ||
+    $town === '栃木県' ||
+    $town === '茨城県'
+    )
   {
-    var_dump($town.'の県庁所在地は'.$city.'です。');
+    echo $town . 'の県庁所在地は' . $city . 'です。';
   } else
   {
-    var_dump($town.'は関東地方ではありません。');
+    echo $town . 'は関東地方ではありません。';
   }
 }
+
 
 // Q10 関数-1
 function hello($name) {
-  return $name.'さん、こんにちは。';
+  return $name . 'さん、こんにちは。';
 }
 
 $message = hello('金谷');
@@ -90,25 +111,27 @@ echo($message);
 $message2 = hello('安藤');
 echo($message2);
 
+
 // Q11 関数-2
 $price = 1000;
 
-function calcTaxInPrice($price)
+function calcTaxInPrice($taxOutPrice)
 {
-  return $price * 1.1;
+  return $taxOutPrice * 1.1;
 }
 
 $taxInPrice = calcTaxInPrice($price);
-var_dump($price.'円の商品の税込価格は'.$taxInPrice.'円です。');
+echo $price . '円の商品の税込価格は' . $taxInPrice.'円です。';
+
 
 // Q12 関数とif文
-function distinguishNum($i)
+function distinguishNum($number)
 {
     if ( $number % 2 === 1 )
     {
-      return $number . 'は奇数です。';   
+        return $number . 'は奇数です。';   
     } else {
-      return $number . 'は偶数です。';
+        return $number . 'は偶数です。';
     }
 }
 
@@ -124,20 +147,16 @@ function evaluateGrade($i) {
   switch ($i) {
       case 'A':
       case 'B':
-          var_dump('合格です。');
-          break;
+          return '合格です。';
       
       case 'C':
-          var_dump('合格ですが追加課題があります。');
-          break;
+          return '合格ですが追加課題があります。';
       
       case 'D':
-          var_dump('不合格です。');
-          break;
+          return '不合格です。';
       
       default:
-          var_dump('判定不明です。講師に問い合わせてください。');
-          break;
+          return '判定不明です。講師に問い合わせてください。';
   }
 }
 
